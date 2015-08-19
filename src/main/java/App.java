@@ -16,6 +16,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+
     get("/rectangle", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       int length = Integer.parseInt(request.queryParams("length"));
@@ -24,8 +25,15 @@ public class App {
       Rectangle myRectangle = new Rectangle(length, width);
       model.put("myRectangle", myRectangle);
 
+      if (myRectangle.isSquare()) {
+        Cube myCube = new Cube(myRectangle);
+        model.put("myCube", myCube);
+      }
+
       model.put("template", "templates/rectangle.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+
   }
 }

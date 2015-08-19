@@ -10,4 +10,7 @@ public class Cube {
     return length * length * length;
   }
 
+  public int surfaceArea() {
+    return mFace.area() * 6;
+  }
 }
